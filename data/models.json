@@ -1,0 +1,20 @@
+[
+  {
+    "id": "roseguard-cyclops",
+    "name": "Roseguard Cyclops",
+    "file": "roseguard-cyclops.glb",
+    "variant": "Min"
+  },
+  {
+    "id": "veil-of-the-wirebound",
+    "name": "Veil of the Wirebound",
+    "file": "veil-of-the-wirebound.glb",
+    "variant": ""
+  },
+  {
+    "id": "rosegold-sentinel",
+    "name": "Rosegold Sentinel",
+    "file": "rosegold-sentinel.glb",
+    "variant": ""
+  }
+]

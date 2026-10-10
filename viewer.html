@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baron Minker — AR Viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="module" src="assets/vendor/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="viewer-page">
+  <div class="viewer-top">
+    <a class="back-btn" href="index.html">← Gallery</a>
+    <div class="viewer-label" id="label" hidden>
+      <div class="card-name" id="labelName"></div>
+      <div class="card-variant" id="labelVariant"></div>
+    </div>
+  </div>
+
+  <model-viewer
+    id="mv"
+    class="full"
+    camera-controls
+    auto-rotate
+    rotation-per-second="12deg"
+    shadow-intensity="1"
+    exposure="1"
+    ar
+    ar-modes="scene-viewer quick-look webxr"
+    ar-scale="auto"
+    touch-action="pan-y">
+    <button slot="ar-button" id="arButton" style="
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      background:var(--signal); color:#fff; font-family:var(--sans); font-weight:600;
+      font-size:14px; padding:14px 28px; border-radius:100px; border:none; cursor:pointer;">
+      View in your space
+    </button>
+  </model-viewer>
+
+  <p class="ar-hint" id="hint">Loading…</p>
+</div>
+
+<script>
+function getParam(name){
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+async function init(){
+  const id = getParam('model');
+  const hint = document.getElementById('hint');
+  const mv = document.getElementById('mv');
+  const label = document.getElementById('label');
+
+  if(!id){
+    hint.textContent = 'No character specified.';
+    return;
+  }
+
+  const res = await fetch('data/models.json');
+  const models = await res.json();
+  const m = models.find(x => x.id === id);
+
+  if(!m){
+    hint.textContent = `Character "${id}" not found.`;
+    return;
+  }
+
+  document.title = `${m.name} — Baron Minker AR`;
+  mv.src = `assets/models/${m.file}`;
+  document.getElementById('labelName').textContent = m.name;
+  document.getElementById('labelVariant').textContent = m.variant || '';
+  document.getElementById('labelVariant').hidden = !m.variant;
+  label.hidden = false;
+
+  hint.textContent = 'Tap and drag to look around. Use "View in your space" to place it in AR.';
+
+  mv.addEventListener('ar-status', (e) => {
+    if(e.detail.status === 'not-presenting') hint.style.display = '';
+    else hint.style.display = 'none';
+  });
+}
+init();
+</script>
+
+</body>
+</html>

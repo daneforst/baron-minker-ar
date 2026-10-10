@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baron Minker — AR Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="module" src="assets/vendor/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="wrap">
+  <p class="kicker">Baron Minker</p>
+  <h1>AR Character Gallery</h1>
+  <p class="sub">Self-hosted 3D characters, viewable in augmented reality straight from your phone. Tap a character, or scan its code from the <a href="print.html" style="color:var(--salmon); font-weight:600;">printed sheet</a>.</p>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="footer-links">
+    <a href="print.html">Open the printable QR sheet →</a>
+  </div>
+</div>
+
+<script>
+async function init(){
+  const res = await fetch('data/models.json');
+  const models = await res.json();
+  const grid = document.getElementById('grid');
+
+  for(const m of models){
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = `viewer.html?model=${encodeURIComponent(m.id)}`;
+
+    const mv = document.createElement('model-viewer');
+    mv.src = `assets/models/${m.file}`;
+    mv.setAttribute('camera-controls', '');
+    mv.setAttribute('disable-zoom', '');
+    mv.setAttribute('auto-rotate', '');
+    mv.setAttribute('rotation-per-second', '18deg');
+    mv.setAttribute('shadow-intensity', '0.8');
+    mv.setAttribute('exposure', '1');
+    mv.setAttribute('loading', 'lazy');
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    body.innerHTML = `
+      <div class="card-name">${m.name}</div>
+      ${m.variant ? `<div class="card-variant">${m.variant}</div>` : ''}
+      <div class="card-link">View in AR →</div>
+    `;
+
+    card.appendChild(mv);
+    card.appendChild(body);
+    grid.appendChild(card);
+  }
+}
+init();
+</script>
+
+</body>
+</html>

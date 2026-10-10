@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baron Minker — Print Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/vendor/qrcode.min.js"></script>
+</head>
+<body>
+
+<div class="print-wrap">
+  <p class="kicker no-print">Baron Minker</p>
+  <h1 class="no-print">Printable QR Sheet</h1>
+  <p class="sub no-print">One code per character. Print this page, cut the cards apart, and scanning any code opens that character straight into AR on a phone.</p>
+
+  <div class="print-toolbar no-print">
+    <span class="sub" id="baseUrlNote"></span>
+    <button class="print-btn" onclick="window.print()">Print this page</button>
+  </div>
+
+  <div class="qr-grid" id="grid"></div>
+</div>
+
+<script>
+async function init(){
+  const res = await fetch('data/models.json');
+  const models = await res.json();
+  const grid = document.getElementById('grid');
+  const base = new URL('viewer.html', window.location.href).href;
+
+  document.getElementById('baseUrlNote').textContent =
+    window.location.protocol === 'file:'
+      ? 'Note: open this from the live site (not a local file) so the QR codes point at a working URL.'
+      : `Codes point to ${new URL('.', window.location.href).href}`;
+
+  for(const m of models){
+    const url = `${base}?model=${encodeURIComponent(m.id)}`;
+
+    const card = document.createElement('div');
+    card.className = 'qr-card';
+
+    const qrHolder = document.createElement('div');
+    card.appendChild(qrHolder);
+
+    const name = document.createElement('div');
+    name.className = 'qr-name';
+    name.textContent = m.name;
+    card.appendChild(name);
+
+    if(m.variant){
+      const variant = document.createElement('div');
+      variant.className = 'qr-variant';
+      variant.textContent = m.variant;
+      card.appendChild(variant);
+    }
+
+    grid.appendChild(card);
+
+    new QRCode(qrHolder, {
+      text: url,
+      width: 180,
+      height: 180,
+      colorDark: '#1c0f21',
+      colorLight: '#fcddbe',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  }
+}
+init();
+</script>
+
+</body>
+</html>
