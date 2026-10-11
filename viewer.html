@@ -94,7 +94,9 @@ async function init(){
   document.getElementById('labelVariant').hidden = !m.variant;
   label.hidden = false;
 
-  hint.textContent = 'Tap and drag to look around. Use "View in your space" to place it in AR.';
+  hint.textContent = m.iosOnly
+    ? 'This animation plays on iPhone (Quick Look) only — the preview above shows the static pose.'
+    : 'Tap and drag to look around. Use "View in your space" to place it in AR.';
 
   mv.addEventListener('ar-status', (e) => {
     if(e.detail.status === 'not-presenting') hint.style.display = '';

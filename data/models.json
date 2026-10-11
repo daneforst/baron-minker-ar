@@ -100,13 +100,6 @@
     "sizeMB": 9.62
   },
   {
-    "id": "rahul__jump-and-grab-wall",
-    "name": "Rahul",
-    "file": "rahul__jump-and-grab-wall.glb",
-    "variant": "Jump and Grab Wall",
-    "sizeMB": 9.62
-  },
-  {
     "id": "rahul__jump-down-from-wall",
     "name": "Rahul",
     "file": "rahul__jump-down-from-wall.glb",
@@ -119,6 +112,13 @@
     "file": "rahul__jump-over-obstacle.glb",
     "variant": "Jump Over Obstacle",
     "sizeMB": 9.63
+  },
+  {
+    "id": "rahul__jump-and-grab-wall",
+    "name": "Rahul",
+    "file": "rahul__jump-and-grab-wall.glb",
+    "variant": "Jump and Grab Wall",
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__push-and-walk-forward",
@@ -170,18 +170,18 @@
     "sizeMB": 9.68
   },
   {
-    "id": "rahul__stand-and-chat",
-    "name": "Rahul",
-    "file": "rahul__stand-and-chat.glb",
-    "variant": "Stand and Chat",
-    "sizeMB": 9.66
-  },
-  {
     "id": "rahul__stand-talking-angry",
     "name": "Rahul",
     "file": "rahul__stand-talking-angry.glb",
     "variant": "Stand Talking Angry",
     "sizeMB": 9.82
+  },
+  {
+    "id": "rahul__stand-and-chat",
+    "name": "Rahul",
+    "file": "rahul__stand-and-chat.glb",
+    "variant": "Stand and Chat",
+    "sizeMB": 9.66
   },
   {
     "id": "rahul__talk-passionately",
@@ -219,17 +219,17 @@
     "sizeMB": 9.7
   },
   {
-    "id": "rahul__walking-in-place",
-    "name": "Rahul",
-    "file": "rahul__walking-in-place.glb",
-    "variant": "Walking in Place",
-    "sizeMB": 9.62
-  },
-  {
     "id": "rahul__walking",
     "name": "Rahul",
     "file": "rahul__walking.glb",
     "variant": "Walking",
+    "sizeMB": 9.62
+  },
+  {
+    "id": "rahul__walking-in-place",
+    "name": "Rahul",
+    "file": "rahul__walking-in-place.glb",
+    "variant": "Walking in Place",
     "sizeMB": 9.62
   },
   {
@@ -245,5 +245,225 @@
     "file": "rahul__wall-support-to-step.glb",
     "variant": "Wall Support to Step",
     "sizeMB": 9.61
+  },
+  {
+    "id": "vertex__fall",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Fall",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__fall.usdz",
+    "usdzSizeMB": 18.54,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__funny-dancing-1",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Funny Dancing 1",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__funny-dancing-1.usdz",
+    "usdzSizeMB": 18.86,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__funny-dancing-2",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Funny Dancing 2",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__funny-dancing-2.usdz",
+    "usdzSizeMB": 18.83,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__idle",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Idle",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__idle.usdz",
+    "usdzSizeMB": 18.51,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__idle-alt1",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Idle Alt1",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__idle-alt1.usdz",
+    "usdzSizeMB": 18.83,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__idle-alt2",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Idle Alt2",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__idle-alt2.usdz",
+    "usdzSizeMB": 18.85,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__leap-of-faith",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Leap of Faith",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__leap-of-faith.usdz",
+    "usdzSizeMB": 18.62,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__magic-genie",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Magic Genie",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__magic-genie.usdz",
+    "usdzSizeMB": 18.69,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__running",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Running",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__running.usdz",
+    "usdzSizeMB": 18.16,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast.usdz",
+    "usdzSizeMB": 18.32,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-2",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 2",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-2.usdz",
+    "usdzSizeMB": 18.44,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-3",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 3",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-3.usdz",
+    "usdzSizeMB": 18.39,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-4",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 4",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-4.usdz",
+    "usdzSizeMB": 18.42,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-5",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 5",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-5.usdz",
+    "usdzSizeMB": 18.31,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-6",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 6",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-6.usdz",
+    "usdzSizeMB": 19.19,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-7",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 7",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-7.usdz",
+    "usdzSizeMB": 18.32,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-8",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 8",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-8.usdz",
+    "usdzSizeMB": 18.36,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__spell-cast-9",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Spell Cast 9",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__spell-cast-9.usdz",
+    "usdzSizeMB": 18.23,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__stand-on-pole-and-balance",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Stand on Pole and Balance",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__stand-on-pole-and-balance.usdz",
+    "usdzSizeMB": 18.27,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__step-hip-hop-dance",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Step Hip Hop Dance",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__step-hip-hop-dance.usdz",
+    "usdzSizeMB": 18.35,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__walking",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Walking",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__walking.usdz",
+    "usdzSizeMB": 18.19,
+    "iosOnly": true
+  },
+  {
+    "id": "vertex__walking-in-place",
+    "name": "Vertex",
+    "file": "vertex.glb",
+    "variant": "Walking in Place",
+    "sizeMB": 2.25,
+    "usdzFile": "vertex__walking-in-place.usdz",
+    "usdzSizeMB": 18.21,
+    "iosOnly": true
   }
 ]

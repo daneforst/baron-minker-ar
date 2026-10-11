@@ -1,4 +1,4 @@
 .DS_Store
 **/.DS_Store
-assets/models-raw/*.glb
-assets/models-raw/*.usdz
+assets/models-raw/*
+!assets/models-raw/.gitkeep

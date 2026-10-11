@@ -8,67 +8,125 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
-<script type="module" src="assets/vendor/model-viewer.min.js"></script>
 </head>
 <body>
 
+<header class="site-header">
+  <img class="monogram" src="assets/brand/monogram.png" alt="">
+  <img class="wordmark" src="assets/brand/wordmark.png" alt="Baron Minker">
+  <p class="kicker center">AR Character Gallery</p>
+</header>
+
+<section class="hero">
+  <div class="hero-panel">
+    <div class="hero-carousel" id="heroCarousel"></div>
+    <button class="hero-arrow left" id="heroPrev" aria-label="Previous character">‹</button>
+    <button class="hero-arrow right" id="heroNext" aria-label="Next character">›</button>
+    <div class="hero-name-link" id="heroNameLink"></div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <img class="pattern" src="assets/brand/pattern.png" alt="">
+  <p class="sub center">3D characters, viewable in augmented reality straight from your phone. Tap a character, or scan a code from the <a href="print.html" style="color:var(--salmon); font-weight:600;">printed sheet</a>.</p>
+</section>
+
 <div class="wrap">
-  <p class="kicker">Baron Minker</p>
-  <h1>AR Character Gallery</h1>
-  <p class="sub">Self-hosted 3D characters, viewable in augmented reality straight from your phone. Tap a character, or scan a code from the <a href="print.html" style="color:var(--salmon); font-weight:600;">printed sheet</a>.</p>
+  <p class="kicker center">Current Models</p>
+  <div class="model-list" id="modelList"></div>
 
-  <div class="grid" id="grid"></div>
-
-  <div class="footer-links">
+  <div class="footer-links" style="text-align:center;">
     <a href="print.html">Open the printable QR sheet →</a>
   </div>
 </div>
 
+<footer style="text-align:center; padding:40px 0 60px;">
+  <img src="assets/brand/monogram.png" alt="" style="width:26px; margin:0 auto; opacity:.6;">
+</footer>
+
 <script>
+const HERO_IMAGES = {
+  Rahul: 'assets/hero/rahul.png',
+  Monet: 'assets/hero/monet.png',
+  Vertex: 'assets/hero/vertex.png'
+};
+
 async function init(){
   const res = await fetch('data/models.json');
   const models = await res.json();
-  const grid = document.getElementById('grid');
 
   const byCharacter = new Map();
   for(const m of models){
     if(!byCharacter.has(m.name)) byCharacter.set(m.name, []);
     byCharacter.get(m.name).push(m);
   }
+  const characters = [...byCharacter.entries()].map(([name, variants]) => ({ name, variants }));
 
-  for(const [name, variants] of byCharacter){
-    const preview = variants.find(v => /idle/i.test(v.variant)) || variants.find(v => /running|walking/i.test(v.variant)) || variants[0];
+  buildHero(characters);
+  buildModelList(characters);
+}
 
+function buildHero(characters){
+  const carousel = document.getElementById('heroCarousel');
+  const dotsWrap = document.getElementById('heroDots');
+  const nameLink = document.getElementById('heroNameLink');
+  let index = 0;
+  let timer;
+
+  characters.forEach((c, i) => {
+    const img = document.createElement('img');
+    img.src = HERO_IMAGES[c.name] || '';
+    img.alt = c.name;
+    if(i === 0) img.classList.add('active');
+    carousel.appendChild(img);
+
+    const dot = document.createElement('button');
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => show(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  function show(i){
+    index = (i + characters.length) % characters.length;
+    [...carousel.children].forEach((img, n) => img.classList.toggle('active', n === index));
+    [...dotsWrap.children].forEach((dot, n) => dot.classList.toggle('active', n === index));
+    const c = characters[index];
+    const href = c.variants.length > 1
+      ? `character.html?name=${encodeURIComponent(c.name)}`
+      : `viewer.html?model=${encodeURIComponent(c.variants[0].id)}`;
+    nameLink.innerHTML = `<a href="${href}">${c.name} →</a>`;
+    resetTimer();
+  }
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(() => show(index + 1), 4500);
+  }
+
+  document.getElementById('heroPrev').addEventListener('click', () => show(index - 1));
+  document.getElementById('heroNext').addEventListener('click', () => show(index + 1));
+
+  if(characters.length) show(0);
+}
+
+function buildModelList(characters){
+  const list = document.getElementById('modelList');
+
+  for(const c of characters){
     const card = document.createElement('a');
-    card.className = 'card';
-    card.href = variants.length > 1
-      ? `character.html?name=${encodeURIComponent(name)}`
-      : `viewer.html?model=${encodeURIComponent(preview.id)}`;
+    card.className = 'model-card';
+    card.href = c.variants.length > 1
+      ? `character.html?name=${encodeURIComponent(c.name)}`
+      : `viewer.html?model=${encodeURIComponent(c.variants[0].id)}`;
 
-    const mv = document.createElement('model-viewer');
-    mv.src = `assets/models/${preview.file}`;
-    mv.setAttribute('camera-controls', '');
-    mv.setAttribute('disable-zoom', '');
-    mv.setAttribute('auto-rotate', '');
-    mv.setAttribute('rotation-per-second', '18deg');
-    mv.setAttribute('autoplay', '');
-    mv.setAttribute('shadow-intensity', '0.8');
-    mv.setAttribute('exposure', '1');
-    mv.setAttribute('loading', 'lazy');
-
-    const body = document.createElement('div');
-    body.className = 'card-body';
-    body.innerHTML = `
-      <div class="card-name">${name}</div>
-      <div class="card-variant">${variants.length > 1 ? `${variants.length} animations` : (preview.variant || '')}</div>
-      <div class="card-link">${variants.length > 1 ? 'Browse animations →' : 'View in AR →'}</div>
+    card.innerHTML = `
+      <img class="portrait" src="${HERO_IMAGES[c.name] || ''}" alt="${c.name}">
+      <div class="model-name">${c.name}</div>
+      <div class="model-count">${c.variants.length} animation${c.variants.length === 1 ? '' : 's'}</div>
+      <div class="model-link">${c.variants.length > 1 ? 'Browse animations →' : 'View in AR →'}</div>
     `;
-
-    card.appendChild(mv);
-    card.appendChild(body);
-    grid.appendChild(card);
+    list.appendChild(card);
   }
 }
+
 init();
 </script>
 
