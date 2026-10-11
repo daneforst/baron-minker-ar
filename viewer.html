@@ -43,12 +43,16 @@
   </model-viewer>
 
   <p class="ar-hint" id="hint">Loading…</p>
+
+  <p style="position:fixed; bottom:6px; right:10px; font-size:10px; color:rgba(223,160,182,.6); z-index:3; pointer-events:none;" id="buildStamp"></p>
 </div>
 
 <script>
 function getParam(name){
   return new URLSearchParams(window.location.search).get(name);
 }
+
+document.getElementById('buildStamp').textContent = 'page updated ' + document.lastModified;
 
 async function init(){
   const id = getParam('model');
