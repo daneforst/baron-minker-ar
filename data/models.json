@@ -1,5 +1,47 @@
 [
   {
+    "id": "monet__360-power-spin-jump",
+    "name": "Monet",
+    "file": "monet__360-power-spin-jump.glb",
+    "variant": "360 Power Spin Jump",
+    "sizeMB": 9.52
+  },
+  {
+    "id": "monet__all-night-dance",
+    "name": "Monet",
+    "file": "monet__all-night-dance.glb",
+    "variant": "All Night Dance",
+    "sizeMB": 9.58
+  },
+  {
+    "id": "monet__cherish-pop-dance",
+    "name": "Monet",
+    "file": "monet__cherish-pop-dance.glb",
+    "variant": "Cherish Pop Dance",
+    "sizeMB": 9.67
+  },
+  {
+    "id": "monet__look-around-dumbfound",
+    "name": "Monet",
+    "file": "monet__look-around-dumbfound.glb",
+    "variant": "Look Around Dumbfound",
+    "sizeMB": 9.55
+  },
+  {
+    "id": "monet__running",
+    "name": "Monet",
+    "file": "monet__running.glb",
+    "variant": "Running",
+    "sizeMB": 9.49
+  },
+  {
+    "id": "monet__step-forward-and-push",
+    "name": "Monet",
+    "file": "monet__step-forward-and-push.glb",
+    "variant": "Step Forward and Push",
+    "sizeMB": 9.53
+  },
+  {
     "id": "rahul__casual-walk",
     "name": "Rahul",
     "file": "rahul__casual-walk.glb",

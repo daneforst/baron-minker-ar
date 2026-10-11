@@ -37,7 +37,7 @@ async function init(){
   }
 
   for(const [name, variants] of byCharacter){
-    const preview = variants.find(v => /idle/i.test(v.variant)) || variants[0];
+    const preview = variants.find(v => /idle/i.test(v.variant)) || variants.find(v => /running|walking/i.test(v.variant)) || variants[0];
 
     const card = document.createElement('a');
     card.className = 'card';

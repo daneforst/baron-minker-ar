@@ -82,7 +82,7 @@ async function init(){
 
   const hero = document.createElement('model-viewer');
   hero.className = 'hero-preview';
-  const preview = variants.find(v => /idle/i.test(v.variant)) || variants[0];
+  const preview = variants.find(v => /idle/i.test(v.variant)) || variants.find(v => /running|walking/i.test(v.variant)) || variants[0];
   hero.src = `assets/models/${preview.file}`;
   hero.setAttribute('camera-controls', '');
   hero.setAttribute('auto-rotate', '');
