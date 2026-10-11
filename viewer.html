@@ -14,7 +14,7 @@
 
 <div class="viewer-page">
   <div class="viewer-top">
-    <a class="back-btn" href="index.html">← Gallery</a>
+    <a class="back-btn" id="backBtn" href="index.html">← Gallery</a>
     <div class="viewer-label" id="label" hidden>
       <div class="card-name" id="labelName"></div>
       <div class="card-variant" id="labelVariant"></div>
@@ -68,6 +68,16 @@ async function init(){
   if(!m){
     hint.textContent = `Character "${id}" not found.`;
     return;
+  }
+
+  const siblings = models.filter(x => x.name === m.name);
+  const backBtn = document.getElementById('backBtn');
+  if(siblings.length > 1){
+    backBtn.href = `character.html?name=${encodeURIComponent(m.name)}`;
+    backBtn.textContent = `← ${m.name}`;
+  } else {
+    backBtn.href = 'index.html';
+    backBtn.textContent = '← Gallery';
   }
 
   document.title = `${m.name} — Baron Minker AR`;
