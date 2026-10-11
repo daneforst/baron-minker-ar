@@ -29,8 +29,14 @@ for src in "$RAW_DIR"/*.glb; do
     continue
   fi
   echo "optimizing: $base.glb"
+  # No geometry compression (draco/meshopt): Android's native Scene Viewer
+  # (used for in-AR placement) renders Draco-compressed skinned meshes in
+  # their static bind pose instead of playing the animation, even though
+  # the in-browser preview (three.js) handles the exact same file fine.
+  # Texture compression + mesh simplification alone still cut raw Meshy
+  # exports by ~70% with no compatibility risk.
   npx --yes @gltf-transform/cli optimize "$src" "$dest" \
-    --compress draco \
+    --compress false \
     --texture-compress webp \
     --texture-size "$TEXTURE_SIZE"
 done

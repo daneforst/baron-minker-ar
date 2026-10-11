@@ -4,202 +4,202 @@
     "name": "Rahul",
     "file": "rahul__casual-walk.glb",
     "variant": "Casual Walk",
-    "sizeMB": 2.03
+    "sizeMB": 9.65
   },
   {
     "id": "rahul__climbing-down-wall",
     "name": "Rahul",
     "file": "rahul__climbing-down-wall.glb",
     "variant": "Climbing Down Wall",
-    "sizeMB": 2.01
+    "sizeMB": 9.63
   },
   {
     "id": "rahul__climbing-up-wall",
     "name": "Rahul",
     "file": "rahul__climbing-up-wall.glb",
     "variant": "Climbing Up Wall",
-    "sizeMB": 2.01
+    "sizeMB": 9.63
   },
   {
     "id": "rahul__diagonal-wall-run",
     "name": "Rahul",
     "file": "rahul__diagonal-wall-run.glb",
     "variant": "Diagonal Wall Run",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__funky-walk",
     "name": "Rahul",
     "file": "rahul__funky-walk.glb",
     "variant": "Funky Walk",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__idle",
     "name": "Rahul",
     "file": "rahul__idle.glb",
     "variant": "Idle",
-    "sizeMB": 2.06
+    "sizeMB": 9.68
   },
   {
     "id": "rahul__indoor-play",
     "name": "Rahul",
     "file": "rahul__indoor-play.glb",
     "variant": "Indoor Play",
-    "sizeMB": 2.06
+    "sizeMB": 9.68
   },
   {
     "id": "rahul__injured-walk-backward",
     "name": "Rahul",
     "file": "rahul__injured-walk-backward.glb",
     "variant": "Injured Walk Backward",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__jump-and-grab-wall",
     "name": "Rahul",
     "file": "rahul__jump-and-grab-wall.glb",
     "variant": "Jump and Grab Wall",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__jump-down-from-wall",
     "name": "Rahul",
     "file": "rahul__jump-down-from-wall.glb",
     "variant": "Jump Down from Wall",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__jump-over-obstacle",
     "name": "Rahul",
     "file": "rahul__jump-over-obstacle.glb",
     "variant": "Jump Over Obstacle",
-    "sizeMB": 2.0
+    "sizeMB": 9.63
   },
   {
     "id": "rahul__push-and-walk-forward",
     "name": "Rahul",
     "file": "rahul__push-and-walk-forward.glb",
     "variant": "Push and Walk Forward",
-    "sizeMB": 2.07
+    "sizeMB": 9.69
   },
   {
     "id": "rahul__red-carpet-walk",
     "name": "Rahul",
     "file": "rahul__red-carpet-walk.glb",
     "variant": "Red Carpet Walk",
-    "sizeMB": 2.05
+    "sizeMB": 9.67
   },
   {
     "id": "rahul__run-to-walk-transition",
     "name": "Rahul",
     "file": "rahul__run-to-walk-transition.glb",
     "variant": "Run to Walk Transition",
-    "sizeMB": 2.01
+    "sizeMB": 9.63
   },
   {
     "id": "rahul__running",
     "name": "Rahul",
     "file": "rahul__running.glb",
     "variant": "Running",
-    "sizeMB": 1.99
+    "sizeMB": 9.61
   },
   {
     "id": "rahul__shrug",
     "name": "Rahul",
     "file": "rahul__shrug.glb",
     "variant": "Shrug",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__sneaky-walk",
     "name": "Rahul",
     "file": "rahul__sneaky-walk.glb",
     "variant": "Sneaky Walk",
-    "sizeMB": 2.01
+    "sizeMB": 9.63
   },
   {
     "id": "rahul__stage-walk",
     "name": "Rahul",
     "file": "rahul__stage-walk.glb",
     "variant": "Stage Walk",
-    "sizeMB": 2.06
+    "sizeMB": 9.68
   },
   {
     "id": "rahul__stand-and-chat",
     "name": "Rahul",
     "file": "rahul__stand-and-chat.glb",
     "variant": "Stand and Chat",
-    "sizeMB": 2.04
+    "sizeMB": 9.66
   },
   {
     "id": "rahul__stand-talking-angry",
     "name": "Rahul",
     "file": "rahul__stand-talking-angry.glb",
     "variant": "Stand Talking Angry",
-    "sizeMB": 2.2
+    "sizeMB": 9.82
   },
   {
     "id": "rahul__talk-passionately",
     "name": "Rahul",
     "file": "rahul__talk-passionately.glb",
     "variant": "Talk Passionately",
-    "sizeMB": 2.07
+    "sizeMB": 9.69
   },
   {
     "id": "rahul__talk-with-hands-open",
     "name": "Rahul",
     "file": "rahul__talk-with-hands-open.glb",
     "variant": "Talk with Hands Open",
-    "sizeMB": 2.02
+    "sizeMB": 9.64
   },
   {
     "id": "rahul__thoughtful-walk",
     "name": "Rahul",
     "file": "rahul__thoughtful-walk.glb",
     "variant": "Thoughtful Walk",
-    "sizeMB": 2.04
+    "sizeMB": 9.66
   },
   {
     "id": "rahul__wake-up-and-look-up",
     "name": "Rahul",
     "file": "rahul__wake-up-and-look-up.glb",
     "variant": "Wake Up and Look Up",
-    "sizeMB": 2.01
+    "sizeMB": 9.63
   },
   {
     "id": "rahul__walk-to-sit",
     "name": "Rahul",
     "file": "rahul__walk-to-sit.glb",
     "variant": "Walk to Sit",
-    "sizeMB": 2.08
+    "sizeMB": 9.7
   },
   {
     "id": "rahul__walking-in-place",
     "name": "Rahul",
     "file": "rahul__walking-in-place.glb",
     "variant": "Walking in Place",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__walking",
     "name": "Rahul",
     "file": "rahul__walking.glb",
     "variant": "Walking",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__wall-support-jump",
     "name": "Rahul",
     "file": "rahul__wall-support-jump.glb",
     "variant": "Wall Support Jump",
-    "sizeMB": 2.0
+    "sizeMB": 9.62
   },
   {
     "id": "rahul__wall-support-to-step",
     "name": "Rahul",
     "file": "rahul__wall-support-to-step.glb",
     "variant": "Wall Support to Step",
-    "sizeMB": 1.99
+    "sizeMB": 9.61
   }
 ]
