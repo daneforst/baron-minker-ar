@@ -32,7 +32,9 @@
     "name": "Monet",
     "file": "monet__running.glb",
     "variant": "Running",
-    "sizeMB": 9.49
+    "sizeMB": 9.49,
+    "usdzFile": "monet__running.usdz",
+    "usdzSizeMB": 16.73
   },
   {
     "id": "monet__step-forward-and-push",
