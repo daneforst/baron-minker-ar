@@ -28,8 +28,11 @@ it's served:
    ```bash
    bash scripts/optimize_models.sh
    ```
-   This compresses geometry (Draco) and textures (WebP, capped at 1536px),
-   typically a 95%+ size cut, and writes the result into `assets/models/`.
+   This compresses textures (WebP, capped at 1536px) and simplifies geometry,
+   typically a ~70% size cut, and writes the result into `assets/models/`.
+   Geometry itself is left uncompressed (no Draco/meshopt) — Draco-compressed
+   skinned meshes render fine in the in-page viewer but freeze on the bind
+   pose when handed off to Android's native Scene Viewer for AR placement.
 3. (Optional) Rename the file in `assets/models/` to the convention
    `character-slug.glb` or `character-slug__animation-slug.glb`
    (e.g. `roseguard-cyclops__walk.glb`) for a cleaner display name, then run:
