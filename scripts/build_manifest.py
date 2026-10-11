@@ -18,8 +18,18 @@ MODELS_DIR = ROOT / "assets" / "models"
 OUT_FILE = ROOT / "data" / "models.json"
 
 
+_MINOR_WORDS = {"a", "an", "and", "as", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to", "with"}
+
+
 def titleize(slug: str) -> str:
-    return " ".join(w.capitalize() for w in slug.split("-"))
+    words = slug.split("-")
+    out = []
+    for i, w in enumerate(words):
+        if 0 < i < len(words) - 1 and w.lower() in _MINOR_WORDS:
+            out.append(w.lower())
+        else:
+            out.append(w.capitalize())
+    return " ".join(out)
 
 
 def main():

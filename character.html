@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baron Minker — Animations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="module" src="assets/vendor/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="wrap">
+  <a href="index.html" class="card-link" style="display:inline-block; margin-bottom:12px;">← Gallery</a>
+  <p class="kicker" id="kicker">Baron Minker</p>
+  <h1 id="title">—</h1>
+  <p class="sub" id="count"></p>
+
+  <div class="anim-grid" id="animGrid"></div>
+</div>
+
+<style>
+  .anim-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:14px;
+    margin-top:40px;
+  }
+  .anim-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:var(--plum);
+    border-radius:4px;
+    padding:16px 18px;
+    transition:background .2s;
+  }
+  .anim-card:hover{ background:#3d1d47; }
+  .anim-card .name{
+    font-family:var(--serif);
+    font-size:16px;
+    color:var(--cream);
+  }
+  .anim-card .arrow{
+    color:var(--salmon);
+    font-size:14px;
+    flex-shrink:0;
+  }
+  .hero-preview{
+    margin-top:32px;
+    width:100%;
+    max-width:360px;
+    aspect-ratio:1/1;
+    background:var(--void);
+    border-radius:4px;
+    --poster-color:var(--void);
+  }
+</style>
+
+<script>
+function getParam(name){
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+async function init(){
+  const name = getParam('name');
+  const res = await fetch('data/models.json');
+  const models = await res.json();
+  const variants = models.filter(m => m.name === name);
+
+  if(!variants.length){
+    document.getElementById('title').textContent = 'Character not found';
+    return;
+  }
+
+  document.title = `${name} — Baron Minker AR`;
+  document.getElementById('title').textContent = name;
+  document.getElementById('count').textContent = `${variants.length} animation${variants.length === 1 ? '' : 's'} — tap one to open it full-screen with AR.`;
+
+  const hero = document.createElement('model-viewer');
+  hero.className = 'hero-preview';
+  const preview = variants.find(v => /idle/i.test(v.variant)) || variants[0];
+  hero.src = `assets/models/${preview.file}`;
+  hero.setAttribute('camera-controls', '');
+  hero.setAttribute('auto-rotate', '');
+  hero.setAttribute('autoplay', '');
+  hero.setAttribute('shadow-intensity', '0.8');
+  document.getElementById('title').insertAdjacentElement('afterend', hero);
+
+  const grid = document.getElementById('animGrid');
+  for(const v of variants){
+    const card = document.createElement('a');
+    card.className = 'anim-card';
+    card.href = `viewer.html?model=${encodeURIComponent(v.id)}`;
+    card.innerHTML = `<span class="name">${v.variant || name}</span><span class="arrow">AR →</span>`;
+    grid.appendChild(card);
+  }
+}
+init();
+</script>
+
+</body>
+</html>

@@ -15,7 +15,7 @@
 <div class="wrap">
   <p class="kicker">Baron Minker</p>
   <h1>AR Character Gallery</h1>
-  <p class="sub">Self-hosted 3D characters, viewable in augmented reality straight from your phone. Tap a character, or scan its code from the <a href="print.html" style="color:var(--salmon); font-weight:600;">printed sheet</a>.</p>
+  <p class="sub">Self-hosted 3D characters, viewable in augmented reality straight from your phone. Tap a character, or scan a code from the <a href="print.html" style="color:var(--salmon); font-weight:600;">printed sheet</a>.</p>
 
   <div class="grid" id="grid"></div>
 
@@ -30,17 +30,28 @@ async function init(){
   const models = await res.json();
   const grid = document.getElementById('grid');
 
+  const byCharacter = new Map();
   for(const m of models){
+    if(!byCharacter.has(m.name)) byCharacter.set(m.name, []);
+    byCharacter.get(m.name).push(m);
+  }
+
+  for(const [name, variants] of byCharacter){
+    const preview = variants.find(v => /idle/i.test(v.variant)) || variants[0];
+
     const card = document.createElement('a');
     card.className = 'card';
-    card.href = `viewer.html?model=${encodeURIComponent(m.id)}`;
+    card.href = variants.length > 1
+      ? `character.html?name=${encodeURIComponent(name)}`
+      : `viewer.html?model=${encodeURIComponent(preview.id)}`;
 
     const mv = document.createElement('model-viewer');
-    mv.src = `assets/models/${m.file}`;
+    mv.src = `assets/models/${preview.file}`;
     mv.setAttribute('camera-controls', '');
     mv.setAttribute('disable-zoom', '');
     mv.setAttribute('auto-rotate', '');
     mv.setAttribute('rotation-per-second', '18deg');
+    mv.setAttribute('autoplay', '');
     mv.setAttribute('shadow-intensity', '0.8');
     mv.setAttribute('exposure', '1');
     mv.setAttribute('loading', 'lazy');
@@ -48,9 +59,9 @@ async function init(){
     const body = document.createElement('div');
     body.className = 'card-body';
     body.innerHTML = `
-      <div class="card-name">${m.name}</div>
-      ${m.variant ? `<div class="card-variant">${m.variant}</div>` : ''}
-      <div class="card-link">View in AR →</div>
+      <div class="card-name">${name}</div>
+      <div class="card-variant">${variants.length > 1 ? `${variants.length} animations` : (preview.variant || '')}</div>
+      <div class="card-link">${variants.length > 1 ? 'Browse animations →' : 'View in AR →'}</div>
     `;
 
     card.appendChild(mv);
