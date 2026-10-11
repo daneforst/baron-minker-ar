@@ -201,19 +201,5 @@
     "file": "rahul__wall-support-to-step.glb",
     "variant": "Wall Support to Step",
     "sizeMB": 1.99
-  },
-  {
-    "id": "rosegold-sentinel",
-    "name": "Rosegold Sentinel",
-    "file": "rosegold-sentinel.glb",
-    "variant": "",
-    "sizeMB": 2.11
-  },
-  {
-    "id": "veil-of-the-wirebound",
-    "name": "Veil of the Wirebound",
-    "file": "veil-of-the-wirebound.glb",
-    "variant": "",
-    "sizeMB": 6.86
   }
 ]
