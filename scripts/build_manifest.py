@@ -41,21 +41,27 @@ def main():
         else:
             char_slug, anim_slug = stem, ""
 
-        entries.append(
-            {
-                "id": stem,
-                "name": titleize(char_slug),
-                "file": glb.name,
-                "variant": titleize(anim_slug) if anim_slug else "",
-                "sizeMB": round(glb.stat().st_size / 1_000_000, 2),
-            }
-        )
+        usdz = MODELS_DIR / f"{stem}.usdz"
+
+        entry = {
+            "id": stem,
+            "name": titleize(char_slug),
+            "file": glb.name,
+            "variant": titleize(anim_slug) if anim_slug else "",
+            "sizeMB": round(glb.stat().st_size / 1_000_000, 2),
+        }
+        if usdz.exists():
+            entry["usdzFile"] = usdz.name
+            entry["usdzSizeMB"] = round(usdz.stat().st_size / 1_000_000, 2)
+
+        entries.append(entry)
 
     OUT_FILE.write_text(json.dumps(entries, indent=2) + "\n")
     print(f"Wrote {len(entries)} model(s) to {OUT_FILE.relative_to(ROOT)}")
     for e in entries:
         label = f"{e['name']} — {e['variant']}" if e["variant"] else e["name"]
-        print(f"  {label}  ({e['sizeMB']} MB)")
+        ios = " [+ iOS]" if "usdzFile" in e else ""
+        print(f"  {label}  ({e['sizeMB']} MB){ios}")
 
 
 if __name__ == "__main__":

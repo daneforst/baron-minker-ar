@@ -86,6 +86,9 @@ async function init(){
 
   document.title = `${m.name} — Baron Minker AR`;
   mv.src = `assets/models/${m.file}`;
+  if(m.usdzFile){
+    mv.setAttribute('ios-src', `assets/models/${m.usdzFile}`);
+  }
   document.getElementById('labelName').textContent = m.name;
   document.getElementById('labelVariant').textContent = m.variant || '';
   document.getElementById('labelVariant').hidden = !m.variant;
